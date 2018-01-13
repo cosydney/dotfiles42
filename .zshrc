@@ -108,3 +108,10 @@ export NVM_DIR="$HOME/.nvm"
 eval $(docker-machine env default)
 mkdir -p $HOME/goinfre/docker $HOME/goinfre/VirtualBox\ VMs
 #docker-machine create --driver virtualbox default
+if [[ $(docker-machine status $DEFAULT_MACHINE) != "Running" ]]; then
+	    echo "Starting docker machine $DEFAULT_MACHINE..."
+		    docker-machine start $DEFAULT_MACHINE > /dev/null;
+			    echo "Docker machine $DEFAULT_MACHINE started."
+			fi
+			eval "$(docker-machine env $DEFAULT_MACHINE)";
+
